@@ -1,12 +1,13 @@
-import Footer from "./footer";
-import Meta from "./meta";
-import Navbar from "./navbar";
+import React from "react";
+import Footer from "./Footer";
+import Meta from "./Meta";
+import Navbar from "./Navbar";
 
 interface LayoutProps {
-    children: React.ReactNode;
+    children?: React.ReactNode;
 }
 
-const Layout: React.FC<LayoutProps> = ({ children }) => {
+const Layout = ({ children }: LayoutProps) => {
     return (
         <>
             <Meta />

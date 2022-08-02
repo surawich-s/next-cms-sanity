@@ -38,9 +38,7 @@ const Navbar = () => {
                     return (
                         <li key={id} className={navBarItemClassName}>
                             <Link href={href}>
-                                <a className="px-2 text-xl dark:text-white">
-                                    {name}
-                                </a>
+                                <a className="px-2 text-xl">{name}</a>
                             </Link>
                         </li>
                     );

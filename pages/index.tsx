@@ -2,20 +2,11 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import { indexQuery } from "../lib/queries";
 import sanity from "../lib/sanity";
-import Layout from "../components/layout";
-import Container from "../components/container";
-import HeroPost from "../components/hero-post";
+import Layout from "../components/Layout";
+import Container from "../components/Container";
+import HeroPost from "../components/HeroPost";
+import { Post } from "../lib/types";
 
-interface Post {
-    _id: string;
-    author: Object;
-    coverImage: string;
-    date: Date;
-    excerpt: string;
-    name: string;
-    slug: string;
-    title: string;
-}
 interface HomeProps {
     allPosts: Array<Post>;
     preview: Boolean;
@@ -33,11 +24,10 @@ const Home: NextPage<HomeProps> = ({ allPosts, preview }) => {
                 <Container>
                     <HeroPost
                         title={heroPost.title}
-                        coverImage={heroPost.coverImage}
-                        date={heroPost.date}
+                        mainImage={heroPost.mainImage}
                         author={heroPost.author}
                         slug={heroPost.slug}
-                        excerpt={heroPost.excerpt}
+                        body={heroPost.body}
                     />
                 </Container>
             </Layout>
@@ -47,6 +37,7 @@ const Home: NextPage<HomeProps> = ({ allPosts, preview }) => {
 
 export async function getStaticProps({ preview = false }) {
     const allPosts = await sanity.fetch(indexQuery);
+    console.log(allPosts[0]);
     return {
         props: { allPosts, preview },
     };

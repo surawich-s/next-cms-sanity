@@ -3,8 +3,8 @@ const postFields = `
   name,
   title,
   date,
-  excerpt,
-  coverImage,
+  body,
+  mainImage,
   "slug": slug.current,
   "author": author->{name, picture},
 `;
