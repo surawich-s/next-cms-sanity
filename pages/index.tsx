@@ -28,7 +28,7 @@ const Home: NextPage<HomeProps> = ({ allPosts, preview }) => {
                         mainImage={heroPost.mainImage}
                         author={heroPost.author}
                         slug={heroPost.slug}
-                        body={heroPost.body}
+                        excerpt={heroPost.excerpt}
                     />
                     <MorePosts posts={morePosts} />
                 </Container>

@@ -3,7 +3,7 @@ const postFields = `
   name,
   title,
   date,
-  body,
+  excerpt,
   mainImage,
   "slug": slug.current,
   "author": author->{name, picture},
@@ -17,11 +17,11 @@ export const indexQuery = `
 export const postQuery = `
 {
   "post": *[_type == "post" && slug.current == $slug] | order(_updatedAt desc) [0] {
-    content,
+    body,
     ${postFields}
   },
   "morePosts": *[_type == "post" && slug.current != $slug] | order(date desc, _updatedAt desc) [0...2] {
-    content,
+    body,
     ${postFields}
   }
 }`;

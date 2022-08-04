@@ -2,11 +2,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { urlForImage } from "../lib/sanityHelper";
 import { MainImage } from "../lib/types";
-type coverImageProps = {
+interface coverImageProps {
     image: MainImage;
     slug?: string;
     title?: string;
-};
+}
 
 const CoverImage = ({
     image: source,

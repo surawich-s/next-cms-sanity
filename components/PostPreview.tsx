@@ -7,21 +7,24 @@ interface PostPreviewProps {
     mainImage: MainImage;
     author: Author;
     slug: string;
+    excerpt: string;
 }
 
-const PostPreview = ({ title, mainImage, slug }: PostPreviewProps) => {
+const PostPreview = ({ title, mainImage, slug, excerpt }: PostPreviewProps) => {
     return (
-        <div>
-            <div className="mb-5">
+        <div className="rounded-lg bg-white">
+            <div className="mb-2">
                 <CoverImage slug={slug} title={title} image={mainImage} />
             </div>
-            <h3 className="text-3xl mb-3 leading-snug">
-                <Link href={`/posts/${slug}`}>
-                    <a className="hover:underline">{title}</a>
-                </Link>
-            </h3>
+            <div className="py-2 px-4">
+                <h3 className="text-3xl mb-3 leading-snug">
+                    <Link href={`/posts/${slug}`}>
+                        <a className="hover:underline">{title}</a>
+                    </Link>
+                </h3>
 
-            <p className="text-lg leading-relaxed mb-4">{}</p>
+                <p className="text-lg leading-relaxed mb-4">{excerpt}</p>
+            </div>
         </div>
     );
 };

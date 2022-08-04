@@ -5,15 +5,21 @@ import { Author, Body, MainImage } from "../lib/types";
 type HeroPostProps = {
     title: string;
     mainImage: MainImage;
-    body: Body;
+    excerpt: string;
     author: Author;
     slug: string;
 };
 
-const HeroPost = ({ title, mainImage, body, author, slug }: HeroPostProps) => {
+const HeroPost = ({
+    title,
+    mainImage,
+    excerpt,
+    author,
+    slug,
+}: HeroPostProps) => {
     return (
-        <section className="relative flex justify-center items-center text-center mt-2 mb-10">
-            <div className="w-full">
+        <section className="relative flex justify-center items-center text-center mt-4 mb-10">
+            <div className="w-screen">
                 {/* <CoverImage slug={slug} title={title} image={coverImage} /> */}
                 <CoverImage image={mainImage} />
             </div>
@@ -27,9 +33,7 @@ const HeroPost = ({ title, mainImage, body, author, slug }: HeroPostProps) => {
                     <div className="mb-4 md:mb-0 text-lg"></div>
                 </div>
                 <div>
-                    <p className="text-lg leading-relaxed mb-4">
-                        {body.children}
-                    </p>
+                    <p className="text-lg leading-relaxed mb-4">{excerpt}</p>
                 </div>
             </div>
         </section>

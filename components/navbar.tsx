@@ -38,7 +38,7 @@ const Navbar = () => {
                     return (
                         <li key={id} className={navBarItemClassName}>
                             <Link href={href}>
-                                <a className="px-2 text-xl">{name}</a>
+                                <a className="px-2 text-xl text-bold">{name}</a>
                             </Link>
                         </li>
                     );
@@ -47,7 +47,7 @@ const Navbar = () => {
         );
     };
     return (
-        <nav id="navbar" className="relative px-4 py-4 bg-white">
+        <nav id="navbar" className="relative px-4 py-4 bg-white border-b-2">
             <div className="flex flex-row items-center justify-center">
                 <h2 className="text-2xl md:text-4xl font-bold tracking-tight md:tracking-tighter leading-tight mr-auto">
                     <Link href="/">
@@ -65,10 +65,10 @@ const Navbar = () => {
             )}
             <button
                 type="button"
-                className="block absolute top-0 right-0 p-4"
+                className="block absolute top-0 right-0 p-4 sm:hidden"
                 onClick={() => setToggleButton((prevState) => !prevState)}
             >
-                <MdOutlineSegment className="sm:hidden w-8 h-8" />
+                <MdOutlineSegment className="w-8 h-8" />
             </button>
         </nav>
     );
