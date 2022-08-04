@@ -6,6 +6,7 @@ import Layout from "../components/Layout";
 import Container from "../components/Container";
 import HeroPost from "../components/HeroPost";
 import { Post } from "../lib/types";
+import MorePosts from "../components/MorePosts";
 
 interface HomeProps {
     allPosts: Array<Post>;
@@ -29,6 +30,7 @@ const Home: NextPage<HomeProps> = ({ allPosts, preview }) => {
                         slug={heroPost.slug}
                         body={heroPost.body}
                     />
+                    <MorePosts posts={morePosts} />
                 </Container>
             </Layout>
         </>
