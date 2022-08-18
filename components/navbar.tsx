@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { MdOutlineSegment } from "react-icons/md";
+import { navigation } from "../lib/constants";
 
 const Navbar = () => {
     const [toggleButton, setToggleButton] = useState(false);
@@ -15,13 +16,6 @@ const Navbar = () => {
         }
     });
 
-    const navigation = [
-        { id: 1, name: "HOME", href: "/" },
-        { id: 2, name: "NEWS", href: "/" },
-        { id: 3, name: "CULTURE", href: "/" },
-        { id: 4, name: "WEALTH", href: "/" },
-        { id: 5, name: "INTERVIEW", href: "/" },
-    ];
     const navBarList = (mode: string) => {
         const navBarListClassName =
             mode === "regular"
@@ -29,16 +23,21 @@ const Navbar = () => {
                 : "flex flex-col justify-center py-4 rounded border-b border-black";
         const navBarItemClassName =
             mode === "regular"
-                ? "hover:underline"
+                ? ""
                 : "bg-white cursor-pointer hover:bg-slate-200 transition delay-150";
         return (
             <ul className={navBarListClassName}>
                 {navigation.map((item) => {
                     const { id, href, name } = item;
                     return (
-                        <li key={id} className={navBarItemClassName}>
+                        <li
+                            key={id}
+                            className={
+                                navBarItemClassName + "px-2 text-xl font-bold"
+                            }
+                        >
                             <Link href={href}>
-                                <a className="px-2 text-xl text-bold">{name}</a>
+                                <a>{name}</a>
                             </Link>
                         </li>
                     );

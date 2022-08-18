@@ -19,7 +19,7 @@ const PostPreview = ({ title, mainImage, slug, excerpt }: PostPreviewProps) => {
             <div className="py-2 px-4">
                 <h3 className="text-3xl mb-3 leading-snug">
                     <Link href={`/posts/${slug}`}>
-                        <a className="hover:underline">{title}</a>
+                        <a>{title}</a>
                     </Link>
                 </h3>
 

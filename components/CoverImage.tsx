@@ -6,16 +6,18 @@ interface coverImageProps {
     image: MainImage;
     slug?: string;
     title?: string;
+    heroPost?: boolean;
 }
 
 const CoverImage = ({
     image: source,
     slug = "",
     title = "",
+    heroPost = false,
 }: coverImageProps) => {
     const image = source ? (
         <Image
-            className="rounded-lg brightness-75"
+            className={`${heroPost ? "" : "rounded-t-lg"} brightness-75`}
             src={urlForImage(source).height(1000).width(2000).url()}
             alt="cover image"
             layout="responsive"

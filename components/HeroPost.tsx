@@ -18,10 +18,9 @@ const HeroPost = ({
     slug,
 }: HeroPostProps) => {
     return (
-        <section className="relative flex justify-center items-center text-center mt-4 mb-10">
+        <section className="relative flex justify-center items-center text-center mb-10">
             <div className="w-screen">
-                {/* <CoverImage slug={slug} title={title} image={coverImage} /> */}
-                <CoverImage image={mainImage} />
+                <CoverImage image={mainImage} heroPost />
             </div>
             <div className="z-10 absolute text-white">
                 <div>
@@ -33,7 +32,9 @@ const HeroPost = ({
                     <div className="mb-4 md:mb-0 text-lg"></div>
                 </div>
                 <div>
-                    <p className="text-lg leading-relaxed mb-4">{excerpt}</p>
+                    <p className="text-2xl lg:text-4xl leading-relaxed mb-4">
+                        {excerpt}
+                    </p>
                 </div>
             </div>
         </section>

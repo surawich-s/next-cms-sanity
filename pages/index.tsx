@@ -20,16 +20,16 @@ const Home: NextPage<HomeProps> = ({ allPosts, preview }) => {
         <>
             <Layout>
                 <Head>
-                    <title>Next.js Blog Example with Sanity.io</title>
+                    <title>Website Name</title>
                 </Head>
+                <HeroPost
+                    title={heroPost.title}
+                    mainImage={heroPost.mainImage}
+                    author={heroPost.author}
+                    slug={heroPost.slug}
+                    excerpt={heroPost.excerpt}
+                />
                 <Container>
-                    <HeroPost
-                        title={heroPost.title}
-                        mainImage={heroPost.mainImage}
-                        author={heroPost.author}
-                        slug={heroPost.slug}
-                        excerpt={heroPost.excerpt}
-                    />
                     <MorePosts posts={morePosts} />
                 </Container>
             </Layout>
