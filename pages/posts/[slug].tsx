@@ -7,11 +7,11 @@ import Layout from "../../components/Layout";
 import Container from "../../components/Container";
 import Head from "next/head";
 import { urlForImage } from "../../lib/sanityHelper";
-import MorePosts from "../../components/MorePosts";
 import PostBody from "../../components/PostBody";
 import PostHeader from "../../components/PostHeader";
 import SectionSeparator from "../../components/SectionSeparator";
 import PostTitle from "../../components/PostTitle";
+import PostList from "../../components/PostList";
 
 interface PostProps {
     data: PostSlugQuery;
@@ -69,7 +69,7 @@ const Post = ({ data, preview }: PostProps) => {
                         </article>
                         <SectionSeparator />
                         {morePosts.length > 0 && (
-                            <MorePosts posts={morePosts} />
+                            <PostList posts={morePosts} title="More Stories" />
                         )}
                     </>
                 )}

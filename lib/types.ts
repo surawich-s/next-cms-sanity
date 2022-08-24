@@ -29,3 +29,15 @@ export interface PostSlugQuery {
     post: Post;
     morePosts: Post[];
 }
+
+export interface Category {
+    title: string;
+    slug: string;
+}
+
+export type PostByCategory = Post & Category;
+
+export interface PostByCategoryQuery {
+    posts: Post[];
+    categorySlug: string;
+}

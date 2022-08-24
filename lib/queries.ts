@@ -42,9 +42,5 @@ export const categorySlugsQuery = `
 
 export const postByCategoryQuery = `
 *[_type == "post" && $category in categories[]->slug.current] | order(date desc, _updatedAt desc) {
-  ${postFields},
-  categories[] -> {
-    title,
-    slug
-  }
+  ${postFields}
 }`;

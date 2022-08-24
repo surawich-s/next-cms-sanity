@@ -6,7 +6,7 @@ import Layout from "../components/Layout";
 import Container from "../components/Container";
 import HeroPost from "../components/HeroPost";
 import { Post } from "../lib/types";
-import MorePosts from "../components/MorePosts";
+import PostList from "../components/PostList";
 
 interface HomeProps {
     allPosts: Array<Post>;
@@ -30,7 +30,7 @@ const Home: NextPage<HomeProps> = ({ allPosts, preview }) => {
                     excerpt={heroPost.excerpt}
                 />
                 <Container>
-                    <MorePosts posts={morePosts} />
+                    <PostList posts={morePosts} title="More Stories" />
                 </Container>
             </Layout>
         </>
@@ -39,7 +39,6 @@ const Home: NextPage<HomeProps> = ({ allPosts, preview }) => {
 
 export async function getStaticProps({ preview = false }) {
     const allPosts = await sanity.fetch(indexQuery);
-    console.log(allPosts[0]);
     return {
         props: { allPosts, preview },
     };
