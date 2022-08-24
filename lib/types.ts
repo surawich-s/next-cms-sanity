@@ -12,14 +12,6 @@ export interface MainImage {
     };
 }
 
-// export interface Body {
-//     _key: string;
-//     _type: string;
-//     children: string[];
-//     markDefs: any[];
-//     style: string;
-// }
-
 export type Body = TypedObject | TypedObject[];
 
 export interface Post {

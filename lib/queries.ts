@@ -35,3 +35,16 @@ export const postBySlugQuery = `
   ${postFields}
 }
 `;
+
+export const categorySlugsQuery = `
+*[_type == "category" && defined(slug.current)][].slug.current
+`;
+
+export const postByCategoryQuery = `
+*[_type == "post" && $category in categories[]->slug.current] | order(date desc, _updatedAt desc) {
+  ${postFields},
+  categories[] -> {
+    title,
+    slug
+  }
+}`;
