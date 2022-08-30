@@ -7,6 +7,7 @@ import Layout from "../../components/Layout";
 import Head from "next/head";
 import Container from "../../components/Container";
 import PostList from "../../components/PostList";
+import PostTitle from "../../components/PostTitle";
 
 interface CategoryProps {
     data: PostByCategoryQuery;
@@ -16,15 +17,12 @@ interface CategoryProps {
 const Category = ({ data, preview }: CategoryProps) => {
     const router = useRouter();
 
-    if (!router.isFallback && !data?.posts) {
+    if (!router.isFallback && !data) {
         return <ErrorPage statusCode={404} />;
     }
 
-    if (!data?.posts) {
-        return <title>Loading…</title>;
-    }
-
-    const { posts, categorySlug } = data;
+    const posts = data?.posts || [];
+    const categorySlug = data?.categorySlug || "";
 
     const title = categorySlug.charAt(0).toUpperCase() + categorySlug.slice(1);
 
@@ -35,7 +33,11 @@ const Category = ({ data, preview }: CategoryProps) => {
                     <title>{title}</title>
                 </Head>
                 <Container>
-                    <PostList posts={posts} title={title} />
+                    {data?.posts.length > 0 && title ? (
+                        <PostList posts={posts} title={title} />
+                    ) : (
+                        <PostTitle>No posts found</PostTitle>
+                    )}
                 </Container>
             </Layout>
         </>
@@ -49,7 +51,7 @@ export async function getStaticProps({
     params: { slug: string };
     preview: boolean;
 }) {
-    const categorySlug = params.slug;
+    const categorySlug = await params.slug;
     const posts = await sanity.fetch(postByCategoryQuery, {
         category: categorySlug,
     });

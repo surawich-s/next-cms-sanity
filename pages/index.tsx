@@ -17,25 +17,41 @@ interface HomeProps {
 const Home: NextPage<HomeProps> = ({ allPosts, preview }) => {
     const heroPost = allPosts[0];
     const morePosts = allPosts.slice(1);
-    if (!heroPost || !morePosts) {
-        return <PostTitle>Loading…</PostTitle>;
-    }
+
+    const renderPageContent = <T extends {}>(
+        content: Array<T>
+    ): JSX.Element => {
+        if (content.length < 1) {
+            return (
+                <Container>
+                    <PostTitle>No posts found</PostTitle>
+                </Container>
+            );
+        } else {
+            return (
+                <>
+                    <HeroPost
+                        title={heroPost?.title}
+                        mainImage={heroPost?.mainImage}
+                        author={heroPost?.author}
+                        slug={heroPost?.slug}
+                        excerpt={heroPost?.excerpt}
+                    />
+                    <Container>
+                        <PostList posts={morePosts} title="More Stories" />
+                    </Container>
+                </>
+            );
+        }
+    };
+
     return (
         <>
             <Layout>
                 <Head>
                     <title>Website Name</title>
                 </Head>
-                <HeroPost
-                    title={heroPost.title}
-                    mainImage={heroPost.mainImage}
-                    author={heroPost.author}
-                    slug={heroPost.slug}
-                    excerpt={heroPost.excerpt}
-                />
-                <Container>
-                    <PostList posts={morePosts} title="More Stories" />
-                </Container>
+                {renderPageContent(allPosts)}
             </Layout>
         </>
     );
