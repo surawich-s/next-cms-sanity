@@ -35,8 +35,6 @@ export interface Category {
     slug: string;
 }
 
-export type PostByCategory = Post & Category;
-
 export interface PostByCategoryQuery {
     posts: Post[];
     categorySlug: string;

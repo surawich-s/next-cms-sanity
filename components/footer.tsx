@@ -1,5 +1,4 @@
 import Container from "./Container";
-import Link from "next/link";
 
 type footerProps = {};
 

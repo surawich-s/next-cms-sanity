@@ -1,6 +1,6 @@
 import Link from "next/link";
+import { Author, MainImage } from "../lib/types";
 import CoverImage from "./CoverImage";
-import { Author, Body, MainImage } from "../lib/types";
 
 type HeroPostProps = {
     title: string;
@@ -32,7 +32,7 @@ const HeroPost = ({
                     <div className="mb-4 md:mb-0 text-lg"></div>
                 </div>
                 <div>
-                    <p className="text-2xl lg:text-4xl leading-relaxed mb-4">
+                    <p className="hidden sm:block text-2xl lg:text-4xl leading-relaxed mb-4">
                         {excerpt}
                     </p>
                 </div>

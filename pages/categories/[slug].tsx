@@ -16,11 +16,15 @@ interface CategoryProps {
 const Category = ({ data, preview }: CategoryProps) => {
     const router = useRouter();
 
-    const { posts, categorySlug } = data;
-
-    if (!router.isFallback && !data.posts) {
+    if (!router.isFallback && !data?.posts) {
         return <ErrorPage statusCode={404} />;
     }
+
+    if (!data?.posts) {
+        return <title>Loading…</title>;
+    }
+
+    const { posts, categorySlug } = data;
 
     const title = categorySlug.charAt(0).toUpperCase() + categorySlug.slice(1);
 
@@ -49,7 +53,6 @@ export async function getStaticProps({
     const posts = await sanity.fetch(postByCategoryQuery, {
         category: categorySlug,
     });
-    console.log(categorySlug);
     return {
         props: {
             preview,

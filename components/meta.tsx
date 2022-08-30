@@ -1,7 +1,5 @@
 import Head from "next/head";
 
-type metaProps = {};
-
 const Meta = ({}) => {
     return (
         <Head>

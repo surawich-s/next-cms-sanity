@@ -22,19 +22,16 @@ const Post = ({ data, preview }: PostProps) => {
     const router = useRouter();
 
     const slug = data?.post?.slug;
-    // const {
-    //     data: { post, morePosts },
-    // } = usePreviewSubscription(postQuery, {
-    //     params: { slug },
-    //     initialData: data,
-    //     enabled: preview && slug,
-    // });
-
-    const { post, morePosts } = data;
 
     if (!router.isFallback && !slug) {
         return <ErrorPage statusCode={404} />;
     }
+
+    if (!data?.post || !data.morePosts) {
+        return <PostTitle>Loading…</PostTitle>;
+    }
+
+    const { post, morePosts } = data;
 
     return (
         <Layout>
@@ -45,10 +42,7 @@ const Post = ({ data, preview }: PostProps) => {
                     <>
                         <article>
                             <Head>
-                                <title>
-                                    {post.title} | Next.js Blog Example with
-                                    Sanity.io
-                                </title>
+                                <title>{post.title}</title>
                                 {post.mainImage && (
                                     <meta
                                         key="ogImage"
@@ -88,8 +82,6 @@ export async function getStaticProps({
     const { post, morePosts } = await sanity.fetch(postQuery, {
         slug: params.slug,
     });
-
-    console.log(post);
 
     return {
         props: {
