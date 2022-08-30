@@ -1,7 +1,5 @@
 import Container from "./Container";
 
-type footerProps = {};
-
 const Footer = ({}) => {
     return (
         <footer className="bg-white border-t border-accent-2">
