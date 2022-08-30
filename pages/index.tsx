@@ -7,6 +7,7 @@ import Container from "../components/Container";
 import HeroPost from "../components/HeroPost";
 import { Post } from "../lib/types";
 import PostList from "../components/PostList";
+import PostTitle from "../components/PostTitle";
 
 interface HomeProps {
     allPosts: Array<Post>;
@@ -16,6 +17,9 @@ interface HomeProps {
 const Home: NextPage<HomeProps> = ({ allPosts, preview }) => {
     const heroPost = allPosts[0];
     const morePosts = allPosts.slice(1);
+    if (!heroPost || !morePosts) {
+        return <PostTitle>Loading…</PostTitle>;
+    }
     return (
         <>
             <Layout>
